@@ -115,7 +115,7 @@
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-enforcer-plugin</artifactId>
           <!-- <version>1.4.1</version> -->
-          <version>3.0.0-M2</version>
+          <version>3.0.0-M3</version>
         </plugin>
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
@@ -357,7 +357,7 @@
         <repository>
           <id>local.git.repo</id>
           <name>Local git repo</name>
-          <url>file:///D:/0sync-local/git/repository</url>
+          <url>file:///D:/__SYNC2/git/repository</url>
         </repository>
       </distributionManagement>
     </profile>
