@@ -7,7 +7,7 @@
 
   <groupId>org.jretty</groupId>
   <artifactId>jretty</artifactId>
-  <version>21</version>
+  <version>22</version>
   <packaging>pom</packaging>
 
   <name>The Jretty Org Open Source Projects</name>
@@ -46,6 +46,18 @@
       <url>${distMgmtSnapshotsUrl}</url>
     </snapshotRepository>
   </distributionManagement> -->
+  <!--<distributionManagement>
+    <snapshotRepository>
+      <id>paramland-maven-snapshots</id>
+      <name>paramland Nexus Snapshots Repository</name>
+      <url>http://10.10.2.182/repository/maven-snapshots/</url>
+    </snapshotRepository>
+    <repository>
+      <id>paramland-maven-releases</id>
+      <name>paramland Nexus releases Repository</name>
+      <url>http://10.10.2.182/repository/maven-releases/</url>
+    </repository>
+  </distributionManagement>-->
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -54,9 +66,10 @@
     <maven.compiler.source>1.7</maven.compiler.source>
     <maven.compiler.target>1.7</maven.compiler.target>
     <surefire.version>2.22.1</surefire.version>
+    <maven.test.skip>true</maven.test.skip>
   </properties>
 
-  <repositories>
+  <!--<repositories>
     <repository>
       <id>apache.snapshots</id>
       <name>Apache Snapshot Repository</name>
@@ -65,7 +78,7 @@
         <enabled>false</enabled>
       </releases>
     </repository>
-  </repositories>
+  </repositories>-->
 
   <build>
     <pluginManagement>
@@ -74,73 +87,62 @@
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-antrun-plugin</artifactId>
-          <version>1.8</version>
+          <version>3.1.0</version><!-- 1.8 -->
         </plugin>
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-assembly-plugin</artifactId>
-          <version>3.1.0</version>
+          <version>3.6.0</version>
         </plugin>
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-clean-plugin</artifactId>
-          <version>3.1.0</version>
+          <version>3.3.2</version>
         </plugin>
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-compiler-plugin</artifactId>
-          <version>3.8.0</version>
+          <version>3.12.0</version>
         </plugin>
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-dependency-plugin</artifactId>
-          <version>3.1.1</version>
+          <version>3.6.1</version>
         </plugin>
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-deploy-plugin</artifactId>
-          <version>2.8.2</version>
-        </plugin>
-        <plugin>
-          <groupId>org.apache.maven.plugins</groupId>
-          <artifactId>maven-docck-plugin</artifactId>
-          <version>1.1</version>
+          <version>3.1.1</version>
         </plugin>
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-ear-plugin</artifactId>
-          <version>3.0.1</version>
+          <version>3.3.0</version>
         </plugin>
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-enforcer-plugin</artifactId>
-          <!-- <version>1.4.1</version> -->
-          <version>3.0.0-M3</version>
-        </plugin>
-        <plugin>
-          <groupId>org.apache.maven.plugins</groupId>
-          <artifactId>maven-failsafe-plugin</artifactId>
-          <version>${surefire.version}</version>
+          <version>3.4.1</version>
         </plugin>
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-help-plugin</artifactId>
-          <version>3.1.0</version>
+          <version>3.4.0</version>
         </plugin>
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-install-plugin</artifactId>
-          <version>2.5.2</version>
+          <version>3.1.1</version>
         </plugin>
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-invoker-plugin</artifactId>
-          <version>3.1.0</version>
+          <version>3.6.0</version>
         </plugin>
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-jar-plugin</artifactId>
-          <version>3.1.0</version>
+          <version>3.3.0</version>
           <configuration>
             <archive>
               <addMavenDescriptor>false</addMavenDescriptor><!-- 在Eclipse中该配置无效，建议使用CLI -->
@@ -158,30 +160,23 @@
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-javadoc-plugin</artifactId>
-          <version>3.0.1</version>
+          <version>3.6.3</version>
         </plugin>
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-plugin-plugin</artifactId>
-          <version>3.5.2</version>
+          <version>3.10.2</version>
         </plugin>
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-project-info-reports-plugin</artifactId>
-          <version>3.0.0</version>
-          <dependencies>
-            <dependency>
-              <groupId>org.apache.bcel</groupId>
-              <artifactId>bcel</artifactId>
-              <version>6.2</version>
-            </dependency>
-          </dependencies>
+          <version>3.5.0</version>
         </plugin>
         <!-- START SNIPPET: release-plugin-configuration -->
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-release-plugin</artifactId>
-          <version>2.5.3</version>
+          <version>3.0.1</version>
           <!-- <configuration>
             <useReleaseProfile>false</useReleaseProfile>
             <goals>deploy</goals>
@@ -193,32 +188,32 @@
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-remote-resources-plugin</artifactId>
-          <version>1.5</version>
-        </plugin>
-        <plugin>
-          <groupId>org.apache.maven.plugins</groupId>
-          <artifactId>maven-resources-plugin</artifactId>
           <version>3.1.0</version>
         </plugin>
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-resources-plugin</artifactId>
+          <version>3.3.1</version>
+        </plugin>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-scm-plugin</artifactId>
-          <version>1.9.5</version>
+          <version>2.0.1</version>
         </plugin>
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-scm-publish-plugin</artifactId>
-          <version>3.0.0</version>
+          <version>3.2.1</version>
         </plugin>
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-site-plugin</artifactId>
-          <version>3.7.1</version>
+          <version>4.0.0-M13</version>
         </plugin>
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-source-plugin</artifactId>
-          <version>3.0.1</version>
+          <version>3.3.0</version>
           <configuration>
             <archive>
               <manifest>
@@ -227,6 +222,7 @@
             </archive>
           </configuration>
         </plugin>
+        <!--  
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-surefire-plugin</artifactId>
@@ -239,18 +235,24 @@
         </plugin>
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-failsafe-plugin</artifactId>
+          <version>${surefire.version}</version>
+        </plugin>
+         -->
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-war-plugin</artifactId>
-          <version>3.2.2</version>
+          <version>3.4.0</version>
         </plugin>
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-shade-plugin</artifactId>
-          <version>3.1.1</version>
+          <version>3.5.1</version>
         </plugin>
         <plugin>
           <groupId>org.apache.rat</groupId>
           <artifactId>apache-rat-plugin</artifactId>
-          <version>0.13</version>
+          <version>0.15</version>
         </plugin>
         <plugin>
           <groupId>org.codehaus.mojo</groupId>
@@ -285,6 +287,21 @@
           </execution>
         </executions>
       </plugin>
+      <plugin>
+        <inherited>true</inherited>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-clean-plugin</artifactId>
+        <version>3.3.2</version>
+        <executions>
+          <execution>
+            <id>auto-clean</id>
+            <phase>initialize</phase>
+            <goals>
+              <goal>clean</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
       <!-- <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-site-plugin</artifactId>
@@ -307,14 +324,21 @@
       <build>
         <plugins>
           <plugin>
-            <inherited>true</inherited>
+            <inherited>false</inherited>
             <groupId>org.apache.maven.plugins</groupId>
             <artifactId>maven-deploy-plugin</artifactId>
-            <configuration>
-              <updateReleaseInfo>true</updateReleaseInfo>
-            </configuration>
           </plugin>
+        </plugins>
+      </build>
+    </profile>
+    <!-- END SNIPPET: release-profile -->
+
+    <profile>
+      <id>jretty-source</id>
+      <build>
+        <plugins>
           <plugin>
+            <inherited>false</inherited>
             <groupId>org.apache.maven.plugins</groupId>
             <artifactId>maven-source-plugin</artifactId>
             <executions>
@@ -329,8 +353,7 @@
         </plugins>
       </build>
     </profile>
-    <!-- END SNIPPET: release-profile -->
-    
+
     <profile>
       <id>jretty-doc</id>
       <build>
@@ -346,6 +369,21 @@
                 </goals>
               </execution>
             </executions>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
+
+    <profile>
+      <id>parent-package</id>
+      <build>
+        <plugins>
+          <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-clean-plugin</artifactId>
+            <configuration>
+              <skip>true</skip> <!-- -Pparent-package 等价于 -Dmaven.clean.skip=true -->
+            </configuration>
           </plugin>
         </plugins>
       </build>
